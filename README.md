@@ -1,3 +1,32 @@
+# ESP32-cam + ST7735S + GUIlite
+
+Forked from [m5stickC](https://github.com/nopnop2002/esp-idf-m5stickC)
+
+* Drive 1.44 st7735s TFT Screen（initled without Inverstion:**0x21h**）
+* Extract LCD Drive component
+* Add GUI component Guilite Sample[HelloStar](https://github.com/idea4good/GuiLiteSamples/tree/master/HelloStar)
+* Compile with `CMakeLists.txt`, plz use `idf.py build`
+* Remove Power control component `axp192`
+
+Wiring diagram：
+
+| ESP32-CAM | ST7735S     |
+| --------- | ----------- |
+| GND       | GND         |
+| 3.3V      | VCC         |
+| GPIO13    | SCL         |
+| GPIO15    | SDA(MOSI)   |
+| GPIO14    | RES         |
+| GPIO16    | DC/RS       |
+| GPIO12    | CS          |
+| 3.3V      | LED         |
+
+![HelloStar](docs/HelloStar.gif)
+
+More about [Guilite](https://github.com/idea4good/GuiLite)
+
+---------
+
 # esp-idf-m5stickC
 
 Example code for driving M5StickC ST7735S display using ESP-IDF's SPI driver.

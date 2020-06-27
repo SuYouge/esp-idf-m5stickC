@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/yogurtsuee/esp/esp-idf-m5stickC/build/CMakeFiles/bootloader
+/home/yogurtsuee/esp/esp-idf-m5stickC/build/CMakeFiles/bootloader.rule
+/home/yogurtsuee/esp/esp-idf-m5stickC/build/CMakeFiles/bootloader-complete.rule
+/home/yogurtsuee/esp/esp-idf-m5stickC/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/yogurtsuee/esp/esp-idf-m5stickC/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/yogurtsuee/esp/esp-idf-m5stickC/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/yogurtsuee/esp/esp-idf-m5stickC/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
+/home/yogurtsuee/esp/esp-idf-m5stickC/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/yogurtsuee/esp/esp-idf-m5stickC/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/yogurtsuee/esp/esp-idf-m5stickC/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
