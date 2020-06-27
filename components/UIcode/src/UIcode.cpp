@@ -1,19 +1,22 @@
-﻿#define GUILITE_ON  //Do not define this macro once more!!!
+﻿#define GUILITE_ON //Do not define this macro once more!!!
 #include "GuiLite.h"
 #include <stdlib.h>
 
 #define UI_WIDTH 240
 #define UI_HEIGHT 320
 
-static c_surface* s_surface;
-static c_display* s_display;
+static c_surface *s_surface;
+static c_display *s_display;
 
-class c_star {
+class c_star
+{
 public:
-	c_star(){
+	c_star()
+	{
 		initialize();
 	}
-	void initialize() {
+	void initialize()
+	{
 		m_x = m_start_x = rand() % UI_WIDTH;
 		m_y = m_start_y = rand() % UI_HEIGHT;
 		m_size = 1;
@@ -21,8 +24,9 @@ public:
 		m_y_factor = UI_HEIGHT;
 		m_size_factor = 1;
 	}
-	void move() {
-		s_surface->fill_rect(m_x, m_y, m_x + m_size - 1, m_y + m_size - 1, 0, Z_ORDER_LEVEL_0);//clear star footprint
+	void move()
+	{
+		s_surface->fill_rect(m_x, m_y, m_x + m_size - 1, m_y + m_size - 1, 0, Z_ORDER_LEVEL_0); //clear star footprint
 
 		m_x_factor -= 6;
 		m_y_factor -= 6;
@@ -57,7 +61,7 @@ public:
 		{
 			return initialize();
 		}
-		s_surface->fill_rect(m_x, m_y, m_x + m_size - 1, m_y + m_size - 1, GL_RGB(255, 255, 255), Z_ORDER_LEVEL_0);//draw star
+		s_surface->fill_rect(m_x, m_y, m_x + m_size - 1, m_y + m_size - 1, GL_RGB(255, 255, 255), Z_ORDER_LEVEL_0); //draw star
 	}
 	int m_start_x, m_start_y;
 	float m_x, m_y, m_x_factor, m_y_factor, m_size_factor, m_size;
@@ -66,7 +70,8 @@ public:
 //////////////////////// start UI ////////////////////////
 
 c_star stars[100];
-void create_ui(void* phy_fb, int screen_width, int screen_height, int color_bytes, struct EXTERNAL_GFX_OP* gfx_op) {
+void create_ui(void *phy_fb, int screen_width, int screen_height, int color_bytes, struct EXTERNAL_GFX_OP *gfx_op)
+{
 	if (phy_fb)
 	{
 		static c_surface surface(UI_WIDTH, UI_HEIGHT, color_bytes, Z_ORDER_LEVEL_0);
@@ -75,7 +80,7 @@ void create_ui(void* phy_fb, int screen_width, int screen_height, int color_byte
 		s_display = &display;
 	}
 	else
-	{//for MCU without framebuffer
+	{ //for MCU without framebuffer
 		static c_surface_no_fb surface_no_fb(UI_WIDTH, UI_HEIGHT, color_bytes, gfx_op, Z_ORDER_LEVEL_0);
 		static c_display display(phy_fb, screen_width, screen_height, &surface_no_fb);
 		s_surface = &surface_no_fb;
@@ -84,8 +89,10 @@ void create_ui(void* phy_fb, int screen_width, int screen_height, int color_byte
 
 	s_surface->fill_rect(0, 0, UI_WIDTH - 1, UI_HEIGHT - 1, 0, Z_ORDER_LEVEL_0);
 
-	while(1) {
-		for (int i = 0; i < sizeof(stars)/sizeof(c_star); i++) {
+	while (1)
+	{
+		for (int i = 0; i < sizeof(stars) / sizeof(c_star); i++)
+		{
 			stars[i].move();
 		}
 		thread_sleep(50);
@@ -93,11 +100,12 @@ void create_ui(void* phy_fb, int screen_width, int screen_height, int color_byte
 }
 
 //////////////////////// interface for all platform ////////////////////////
-extern "C" void startHelloStar(void* phy_fb, int width, int height, int color_bytes, struct EXTERNAL_GFX_OP* gfx_op) {
+extern "C" void startHelloStar(void *phy_fb, int width, int height, int color_bytes, struct EXTERNAL_GFX_OP *gfx_op)
+{
 	create_ui(phy_fb, width, height, color_bytes, gfx_op);
 }
 
-void* getUiOfHelloStar(int* width, int* height, bool force_update)
+void *getUiOfHelloStar(int *width, int *height, bool force_update)
 {
 	if (s_display)
 	{

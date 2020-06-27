@@ -5,9 +5,10 @@
 #include "freertos/task.h"
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
-void delay_ms(unsigned short nms);
+    void delay_ms(unsigned short nms);
 #ifdef __cplusplus
 }
 #endif
