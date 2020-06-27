@@ -2,8 +2,8 @@
 #include "GuiLite.h"
 #include <stdlib.h>
 
-#define UI_WIDTH 240
-#define UI_HEIGHT 320
+#define UI_WIDTH 128
+#define UI_HEIGHT 128
 
 static c_surface *s_surface;
 static c_display *s_display;

@@ -29,14 +29,21 @@ extern "C"
 {
 #endif
 
+	/* GUILite Component Preperation Start */ 
+	
 	//Implement it, if you have more fast solution than drawing pixels one by one.
 	//void gfx_fill_rect(int x0, int y0, int x1, int y1, unsigned int rgb){}
 
 	//UI entry
 	struct EXTERNAL_GFX_OP my_gfx_op;
 
-	extern void startHelloStar(void *phy_fb, int width, int height, int color_bytes, struct EXTERNAL_GFX_OP *gfx_op);
-
+	// extern void startHelloStar(void *phy_fb, int width, int height, int color_bytes, struct EXTERNAL_GFX_OP *gfx_op);
+	// extern void startHello3D(void* phy_fb, int width, int height, int color_bytes, struct EXTERNAL_GFX_OP* gfx_op);
+	// extern void startHelloParticle(void* phy_fb, int width, int height, int color_bytes, struct EXTERNAL_GFX_OP* gfx_op);
+	// extern void startHello3Dwave(void* phy_fb, int width, int height, int color_bytes, struct EXTERNAL_GFX_OP* gfx_op);
+	// extern void startHelloCircle(void* phy_fb, int width, int height, int color_bytes, struct EXTERNAL_GFX_OP* gfx_op);
+	extern void startHelloMolecule(void* phy_fb, int width, int height, int color_bytes, struct EXTERNAL_GFX_OP* gfx_op);
+	
 	ST7735_t dev;
 
 	//Encapsulate your LCD driver:
@@ -45,7 +52,7 @@ extern "C"
 		lcdDrawPixel(&dev, x, y, GL_RGB_32_to_16(rgb));
 	}
 
-	// extern int lcdDrawString(ST7735_t * dev, FontxFile *fx, uint16_t x, uint16_t y, uint8_t * ascii, uint16_t color);
+	/* GUILite Component Preperation End */
 
 	static void SPIFFS_Directory(char *path)
 	{
@@ -485,79 +492,92 @@ extern "C"
 		while (1)
 		{
 			ESP_LOGI(TAG, "Mainloop Start");
-			// AXP192_ScreenBreath(15);
 
 			FillTest(&dev, SCREEN_WIDTH, SCREEN_HEIGHT);
 			WAIT;
-			//vTaskDelay(INTERVAL);
 
 			ColorBarTest(&dev, SCREEN_WIDTH, SCREEN_HEIGHT);
 			WAIT;
-			//vTaskDelay(INTERVAL);
 
-			ArrowTest(&dev, fx16, SCREEN_WIDTH, SCREEN_HEIGHT);
-			WAIT;
-			//vTaskDelay(INTERVAL);
+			// ArrowTest(&dev, fx16, SCREEN_WIDTH, SCREEN_HEIGHT);
+			// WAIT;
 
-			LineTest(&dev, SCREEN_WIDTH, SCREEN_HEIGHT);
-			WAIT;
+			// LineTest(&dev, SCREEN_WIDTH, SCREEN_HEIGHT);
+			// WAIT;
 
-			CircleTest(&dev, SCREEN_WIDTH, SCREEN_HEIGHT);
-			WAIT;
+			// CircleTest(&dev, SCREEN_WIDTH, SCREEN_HEIGHT);
+			// WAIT;
 
-			RoundRectTest(&dev, SCREEN_WIDTH, SCREEN_HEIGHT);
-			WAIT;
+			// RoundRectTest(&dev, SCREEN_WIDTH, SCREEN_HEIGHT);
+			// WAIT;
 
-			HorizontalTest(&dev, fx16, SCREEN_WIDTH, SCREEN_HEIGHT);
-			WAIT;
+			// HorizontalTest(&dev, fx16, SCREEN_WIDTH, SCREEN_HEIGHT);
+			// WAIT;
 
-			VerticalTest(&dev, fx16, SCREEN_WIDTH, SCREEN_HEIGHT);
-			WAIT;
+			// VerticalTest(&dev, fx16, SCREEN_WIDTH, SCREEN_HEIGHT);
+			// WAIT;
 
-			FillRectTest(&dev, SCREEN_WIDTH, SCREEN_HEIGHT);
-			WAIT;
+			// FillRectTest(&dev, SCREEN_WIDTH, SCREEN_HEIGHT);
+			// WAIT;
 
-			ColorTest(&dev, SCREEN_WIDTH, SCREEN_HEIGHT);
-			WAIT;
+			// ColorTest(&dev, SCREEN_WIDTH, SCREEN_HEIGHT);
+			// WAIT;
 
-			ScrollTest(&dev, fx16, SCREEN_WIDTH, SCREEN_HEIGHT);
-			WAIT;
+			// ScrollTest(&dev, fx16, SCREEN_WIDTH, SCREEN_HEIGHT);
+			// WAIT;
 
-			// Multi Font Test
-			uint16_t color;
-			uint8_t ascii[20];
-			uint16_t xpos;
-			lcdFillScreen(&dev, BLACK);
-			color = WHITE;
-			lcdSetFontDirection(&dev, 1);
-			xpos = SCREEN_WIDTH - 16;
-			strcpy((char *)ascii, "16Dot Font");
-			lcdDrawString(&dev, fx16, xpos, 0, ascii, color);
+			// // Multi Font Test, Font is larger for 1.44 screen in width dir
+			// uint16_t color;
+			// uint8_t ascii[20];
+			// uint16_t xpos;
+			// lcdFillScreen(&dev, BLACK);
+			// color = WHITE;
+			// lcdSetFontDirection(&dev, 1);
+			// xpos = SCREEN_WIDTH - 16;
+			// strcpy((char *)ascii, "16Dot Font");
+			// lcdDrawString(&dev, fx16, xpos, 0, ascii, color);
 
-			xpos = xpos - 24;
-			strcpy((char *)ascii, "24Dot Font");
-			lcdDrawString(&dev, fx24, xpos, 0, ascii, color);
+			// xpos = xpos - 24;
+			// strcpy((char *)ascii, "24Dot Font");
+			// lcdDrawString(&dev, fx24, xpos, 0, ascii, color);
 
-			xpos = xpos - 32;
-			strcpy((char *)ascii, "32Dot Font");
-			lcdDrawString(&dev, fx32, xpos, 0, ascii, color);
-			WAIT;
+			// xpos = xpos - 32;
+			// strcpy((char *)ascii, "32Dot Font");
+			// lcdDrawString(&dev, fx32, xpos, 0, ascii, color);
+			// WAIT;
 
-			// Brightness control
-			lcdFillScreen(&dev, WHITE);
-			color = BLACK;
-			lcdSetFontDirection(&dev, 1);
-			xpos = SCREEN_WIDTH - (24 * 2);
-			strcpy((char *)ascii, " Push Button");
-			lcdDrawString(&dev, fx24, xpos, 0, ascii, color);
+			// // Brightness control
+			// lcdFillScreen(&dev, WHITE);
+			// color = BLACK;
+			// lcdSetFontDirection(&dev, 1);
+			// xpos = SCREEN_WIDTH - (24 * 2);
+			// strcpy((char *)ascii, " Push Button");
+			// lcdDrawString(&dev, fx24, xpos, 0, ascii, color);
 
-			//Link your LCD driver & start UI:
+			/* Link your LCD driver & start UI */
 			my_gfx_op.draw_pixel = gfx_draw_pixel;
 			my_gfx_op.fill_rect = NULL; //gfx_fill_rect;
-			startHelloStar(NULL, 128, 128, 2, &my_gfx_op);
-			while (1)
-			{
-			}
+
+			// startHelloStar(NULL, 128, 128, 2, &my_gfx_op);
+			// vTaskDelay(3000 / portTICK_PERIOD_MS);
+
+			// startHello3D(NULL, 128, 128, 2, &my_gfx_op);
+			// vTaskDelay(3000 / portTICK_PERIOD_MS);
+
+			// startHelloParticle(NULL, 128, 128, 2, &my_gfx_op);
+			// vTaskDelay(3000 / portTICK_PERIOD_MS);
+
+			// startHello3Dwave(NULL, 128, 128, 2, &my_gfx_op);
+			// vTaskDelay(3000 / portTICK_PERIOD_MS);
+
+			// startHelloCircle(NULL, 128, 128, 2, &my_gfx_op);
+			// vTaskDelay(3000 / portTICK_PERIOD_MS);
+
+			startHelloMolecule(NULL, 128, 128, 2, &my_gfx_op);
+			vTaskDelay(3000 / portTICK_PERIOD_MS);
+			// while (1)
+			// {
+			// }
 
 			ESP_LOGI(TAG, "Mainloop End");
 			vTaskDelay(INTERVAL);

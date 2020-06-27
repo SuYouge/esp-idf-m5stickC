@@ -215,71 +215,80 @@ void lcdInit(ST7735_t * dev, int width, int height)
 	spi_master_write_command(dev, 0xC5);	//VCOM Control 1
 	spi_master_write_data_byte(dev, 0x0E);
 
-	spi_master_write_command(dev, 0x20);	//Display Inversion Off 
-
 	spi_master_write_command(dev, 0x36);	//Memory Data Access Control 
 	spi_master_write_data_byte(dev, 0xC8);	//BGR color filter panel
 	//spi_master_write_data_byte(dev, 0xC0);	//RGB color filter panel
+
+	// spi_master_write_command(dev, 0x20);	//Display Inversion Off 
+	// spi_master_write_command(dev, 0x21);	//Display Inversion On
+
+	spi_master_write_command(dev, 0xE0);	//Gamma (‘+’polarity) Correction Characteristics Setting
+	spi_master_write_data_byte(dev, 0x0f);
+	spi_master_write_data_byte(dev, 0x1a);
+	spi_master_write_data_byte(dev, 0x0f);
+	spi_master_write_data_byte(dev, 0x18);
+	spi_master_write_data_byte(dev, 0x2f);
+	spi_master_write_data_byte(dev, 0x28);
+	spi_master_write_data_byte(dev, 0x20);
+	spi_master_write_data_byte(dev, 0x22);
+	spi_master_write_data_byte(dev, 0x1f);
+	spi_master_write_data_byte(dev, 0x1b);
+	spi_master_write_data_byte(dev, 0x23);
+	spi_master_write_data_byte(dev, 0x37);
+	spi_master_write_data_byte(dev, 0x00);
+	spi_master_write_data_byte(dev, 0x07);
+	spi_master_write_data_byte(dev, 0x02);
+	spi_master_write_data_byte(dev, 0x10);
+
+	spi_master_write_command(dev, 0xE1);	//Gamma ‘-’polarity Correction Characteristics Setting
+	spi_master_write_data_byte(dev, 0x0f);
+	spi_master_write_data_byte(dev, 0x1b);
+	spi_master_write_data_byte(dev, 0x0f);
+	spi_master_write_data_byte(dev, 0x17);
+	spi_master_write_data_byte(dev, 0x33);
+	spi_master_write_data_byte(dev, 0x2c);
+	spi_master_write_data_byte(dev, 0x29);
+	spi_master_write_data_byte(dev, 0x2e);
+	spi_master_write_data_byte(dev, 0x30);
+	spi_master_write_data_byte(dev, 0x30);
+	spi_master_write_data_byte(dev, 0x39);
+	spi_master_write_data_byte(dev, 0x3f);
+	spi_master_write_data_byte(dev, 0x00);
+	spi_master_write_data_byte(dev, 0x07);
+	spi_master_write_data_byte(dev, 0x03);
+	spi_master_write_data_byte(dev, 0x10);
+
+	spi_master_write_command(dev, 0x2A);	//Column Address Set
+	spi_master_write_data_byte(dev, 0x00);
+	spi_master_write_data_byte(dev, 0x00);
+	spi_master_write_data_byte(dev, 0x00);
+	spi_master_write_data_byte(dev, 0x7f);
+
+	spi_master_write_command(dev, 0x2B);	//Row Address Set
+	spi_master_write_data_byte(dev, 0x00);
+	spi_master_write_data_byte(dev, 0x00);
+	spi_master_write_data_byte(dev, 0x00);
+	spi_master_write_data_byte(dev, 0x9f);
+
+
+	spi_master_write_command(dev, 0xf0);
+	spi_master_write_data_byte(dev, 0x01);
+	spi_master_write_command(dev, 0xf6);
+	spi_master_write_data_byte(dev, 0x00);
 
 	spi_master_write_command(dev, 0x3A);	//Interface Pixel Format
 	spi_master_write_data_byte(dev, 0x05);	//16-bit/pixel 65K-Colors(RGB 5-6-5-bit Input)
 	// spi_master_write_data_byte(dev, 0x03);	//16-bit/pixel 65K-Colors(RGB 5-6-5-bit Input)
 
-	spi_master_write_command(dev, 0x2A);	//Column Address Set
-	spi_master_write_data_byte(dev, 0x00);
-	spi_master_write_data_byte(dev, 0x02);
-	spi_master_write_data_byte(dev, 0x00);
-	spi_master_write_data_byte(dev, 0x81);
-
-	spi_master_write_command(dev, 0x2B);	//Row Address Set
-	spi_master_write_data_byte(dev, 0x00);
-	spi_master_write_data_byte(dev, 0x01);
-	spi_master_write_data_byte(dev, 0x00);
-	spi_master_write_data_byte(dev, 0xA0);
-
-	// spi_master_write_command(dev, 0x21);	//Display Inversion On
-
-	spi_master_write_command(dev, 0xE0);	//Gamma (‘+’polarity) Correction Characteristics Setting
-	spi_master_write_data_byte(dev, 0x02);
-	spi_master_write_data_byte(dev, 0x1C);
-	spi_master_write_data_byte(dev, 0x07);
-	spi_master_write_data_byte(dev, 0x12);
-	spi_master_write_data_byte(dev, 0x37);
-	spi_master_write_data_byte(dev, 0x32);
-	spi_master_write_data_byte(dev, 0x29);
-	spi_master_write_data_byte(dev, 0x2D);
-	spi_master_write_data_byte(dev, 0x29);
-	spi_master_write_data_byte(dev, 0x25);
-	spi_master_write_data_byte(dev, 0x2B);
-	spi_master_write_data_byte(dev, 0x39);
-	spi_master_write_data_byte(dev, 0x00);
-	spi_master_write_data_byte(dev, 0x01);
-	spi_master_write_data_byte(dev, 0x03);
-	spi_master_write_data_byte(dev, 0x10);
-
-	spi_master_write_command(dev, 0xE1);	//Gamma ‘-’polarity Correction Characteristics Setting
-	spi_master_write_data_byte(dev, 0x03);
-	spi_master_write_data_byte(dev, 0x1D);
-	spi_master_write_data_byte(dev, 0x07);
-	spi_master_write_data_byte(dev, 0x06);
-	spi_master_write_data_byte(dev, 0x2E);
-	spi_master_write_data_byte(dev, 0x2C);
-	spi_master_write_data_byte(dev, 0x29);
-	spi_master_write_data_byte(dev, 0x2D);
-	spi_master_write_data_byte(dev, 0x2E);
-	spi_master_write_data_byte(dev, 0x2E);
-	spi_master_write_data_byte(dev, 0x37);
-	spi_master_write_data_byte(dev, 0x3F);
-	spi_master_write_data_byte(dev, 0x00);
-	spi_master_write_data_byte(dev, 0x00);
-	spi_master_write_data_byte(dev, 0x02);
-	spi_master_write_data_byte(dev, 0x10);
-
-	spi_master_write_command(dev, 0x13);	//Normal Display Mode On
-	delayMS(10);
+	// spi_master_write_command(dev, 0x13);	//Normal Display Mode On
+	// delayMS(10);
 
 	spi_master_write_command(dev, 0x29);	//Display On
 	delayMS(100);
+
+	spi_master_write_command(dev, 0x36);	//Memory Data Access Control 
+	spi_master_write_data_byte(dev, 0xC8);	//BGR color filter panel
+	//spi_master_write_data_byte(dev, 0xC0);	//RGB color filter panel
 }
 
 // Draw pixel
