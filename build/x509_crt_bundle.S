@@ -1,4 +1,4 @@
-/* * Data converted from /home/yogurtsuee/esp-idf-m5stickC/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from /home/yogurtsuee/esp/test-component/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded

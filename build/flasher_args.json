@@ -10,12 +10,12 @@
     "flash_files" : {
         "0x8000" : "partition_table/partition-table.bin",
         "0x1000" : "bootloader/bootloader.bin",
-        "0x10000" : "m5StickC.bin",
+        "0x10000" : "mpu6050.bin",
         "0x110000" : "storage.bin"
     },
     "partition_table" : { "offset" : "0x8000", "file" : "partition_table/partition-table.bin" },
     "bootloader" : { "offset" : "0x1000", "file" : "bootloader/bootloader.bin" },
-    "app" : { "offset" : "0x10000", "file" : "m5StickC.bin" },
+    "app" : { "offset" : "0x10000", "file" : "mpu6050.bin" },
     "storage" : { "offset" : "0x110000", "file" : "storage.bin" },
     "extra_esptool_args" : {
         "after"  : "hard_reset",

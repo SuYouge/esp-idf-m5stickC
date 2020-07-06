@@ -64,5 +64,10 @@ $<TARGET_FILE:__idf_ulp>
 $<TARGET_FILE:__idf_unity>
 $<TARGET_FILE:__idf_wifi_provisioning>
 $<TARGET_FILE:__idf_main>
+$<TARGET_FILE:__idf_MPU6050>
+$<TARGET_FILE:__idf_SSD1306>
 $<TARGET_FILE:__idf_ST7735S>
 $<TARGET_FILE:__idf_UIcode>
+$<TARGET_FILE:__idf_camera>
+$<TARGET_FILE:__idf_http_server>
+$<TARGET_FILE:__idf_quirc>

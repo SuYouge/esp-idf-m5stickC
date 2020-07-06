@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/yogurtsuee/esp-idf-m5stickC/build/esp-idf/soc/soc/esp32/cmake_install.cmake")
+  include("/home/yogurtsuee/esp/test-component/build/esp-idf/soc/soc/esp32/cmake_install.cmake")
 
 endif()
 

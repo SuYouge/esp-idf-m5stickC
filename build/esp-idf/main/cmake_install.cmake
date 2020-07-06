@@ -1,4 +1,4 @@
-# Install script for directory: /home/yogurtsuee/esp-idf-m5stickC/main
+# Install script for directory: /home/yogurtsuee/esp/test-component/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
