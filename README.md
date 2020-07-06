@@ -1,3 +1,9 @@
+# ESP32-CAM + MPU6050 + SSD1306
+
+Camera + mpu6050 + ssd1306
+
+相机花屏了，需要进一步调整各个任务。
+
 # ESP32-cam + ST7735S + GUIlite
 
 Forked from [m5stickC](https://github.com/nopnop2002/esp-idf-m5stickC)
